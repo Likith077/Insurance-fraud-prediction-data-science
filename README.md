@@ -122,6 +122,12 @@ insurance-fraud-detection/
 ![data science](https://github.com/user-attachments/assets/3f458714-65b3-49c5-bebc-14848b08683a)
 ![data-science](https://github.com/user-attachments/assets/48f48324-5448-46a6-b99b-c3fd1c05e7cb)
 
+## Supervised by 
+[Prof. Agughasi Victor Ikechukwu](https://github.com/Victor-Ikechukwu), 
+(Assistant Professor) 
+Department of CSE, MIT Mysore)
+
+
 ## Collaborators
 
 - 4MH21CS044 [Likith Nirvan]() 
