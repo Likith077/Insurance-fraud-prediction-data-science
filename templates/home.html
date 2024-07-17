@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <title>Insurance fraud</title>
+  <link href="{{ url_for('static', filename='maicons.css')}}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='bootstrap.css')}}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='owl.carousel.css')}}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='animate.css')}}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='theme.css')}}" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#"><span class="text-primary">Insurance Fraud Prediction System</span></a>  
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home1') }}">Prediction</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>    
+  <div class="page-hero bg-image overlay-dark" style="background-image: url('static/img/pic.jpg');">
+
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <span class="subhead">Insurance Fraud</span>
+        <h1 class="display-4"></h1>
+        <a href="#" class="btn btn-primary"></a>
+      </div>
+    </div>
+  </div>
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Make a Prediction</h1>
+      <form id="predictionForm" class="main-form">
+        <div class="row mt-5 ">
+          <div class="col-12 col-sm-6 py-2">
+            <input type="number" class="form-control" placeholder="AGE" name="age" required min="18" max="100" id="ageInput">
+            <div class="invalid-feedback" id="ageWarning" style="display: none;">
+              Please enter an age between 18 and 100.
+            </div>
+          </div>          
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="policy annual premium" name="policy_annual_premium" required>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label for="policy_state">Policy_state:</label>
+            <select name="policy_state" class="form-control" required>
+              <option value="0">OH</option>
+              <option value="1">IL</option>
+              <option value="2">IN</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label>insured_sex:</label>
+            <select name="insured_sex" class="form-control" required>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label>Insured Education Level:</label>
+            <select name="insured_education_level" class="form-control" required>
+              <option value="0">JD</option>
+              <option value="1">High School</option>
+              <option value="2">Associate</option>
+              <option value="3">MD</option>
+              <option value="4">Masters</option>
+              <option value="5">PhD</option>
+              <option value="6">College</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label>incident_type:</label>
+            <select name="incident_type" class="form-control" required>
+              <option value="0">Multi-vehicle Collision</option>
+              <option value="1">Single Vehicle Collision</option>
+              <option value="2">Vehicle Theft</option>
+              <option value="3">Parked Car</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label>collision_type:</label>
+            <select name="collision_type" class="form-control" required>
+              <option value="0">Rear Collision</option>
+              <option value="1">Side Collision</option>
+              <option value="2">Front Collision</option>
+              <option value="3">Other</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <label>incident_severity</label>
+            <select name="incident_severity" class="form-control" required>
+              <option value="0">Minor Damage</option>
+              <option value="1">Total Loss</option>
+              <option value="2">Major Damage</option>
+              <option value="3">Trivial Damage</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="Number of vehicles involved" name="number_of_vehicles_involved" required>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="witnesses" name="witnesses" required>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="injury_claim" name="injury_claim" required>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="property claim" name="property_claim" required>
+          </div>
+          <div class="col-12 col-sm-6 py-2 ">
+            <input type="text" class="form-control" placeholder="Vehicle Claim" name="Vehicle_Claim" required>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary wow zoomIn">Submit Request</button>
+          <button type="button" class="btn btn-secondary wow zoomIn" id="clearBtn">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for displaying prediction result -->
+  <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resultModalLabel">Prediction Result</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>This transaction most likely belongs to: <strong id="predictionResult"></strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static', filename='wow.min.js')}}"></script>
+  <script src="{{url_for('static', filename='theme.js')}}"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#predictionForm').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          url: '/upload_image',
+          type: 'POST',
+          data: $(this).serialize(),
+          success: function(response) {
+            $('#predictionResult').text(response.class1);
+            $('#resultModal').modal('show');
+          },
+          error: function(error) {
+            console.log(error);
+            alert('An error occurred. Please try again.');
+          }
+        });
+      });
+
+      $('#clearBtn').on('click', function() {
+        $('#predictionForm')[0].reset();
+      });
+    });
+    document.getElementById('ageInput').addEventListener('input', function () {
+  var age = this.value;
+  var ageWarning = document.getElementById('ageWarning');
+
+  if (age < 18 || age > 100) {
+    ageWarning.style.display = 'block';
+    this.setCustomValidity('Please enter an age between 18 and 100.');
+  } else {
+    ageWarning.style.display = 'none';
+    this.setCustomValidity('');
+  }
+});
+  </script>
+</body>
+</html>
