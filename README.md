@@ -110,6 +110,91 @@ insurance-fraud-detection/
 ├── requirements.txt
 └── README.md
 ```
+
+
+### Code Explanation
+
+#### Imports and Setup
+The script imports various libraries, including Flask for web development, Scikit-learn for machine learning, and other utilities like Pandas for data manipulation.
+
+```python
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import metrics
+from sklearn.metrics import classification_report, roc_auc_score, precision_recall_fscore_support
+import pandas as pd
+import os
+
+app = Flask(__name__)
+app.secret_key = '1a2b3c4d5e'
+```
+
+#### Routes
+The script defines several routes to handle different parts of the web application:
+
+- **Home Route**:
+  ```python
+  @app.route('/')
+  def home():
+      return render_template('index.html')
+  ```
+
+- **About Route**:
+  ```python
+  @app.route('/about')
+  def about():
+      return render_template('about.html')
+  ```
+
+#### File Upload Handling
+The script likely includes functionality for users to upload insurance claims data for analysis. This part of the code will handle file uploads and data processing:
+
+```python
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('uploads', filename))
+            # Process the uploaded file here
+            return redirect(url_for('uploaded_file', filename=filename))
+    return render_template('upload.html')
+```
+
+#### Model Prediction
+The script includes logic to load the pre-trained model and make predictions on new data:
+
+```python
+@app.route('/predict', methods=['POST'])
+def predict():
+    # Load data from the request
+    data = request.get_json()
+    # Process and predict using the loaded model
+    prediction = model.predict([data])
+    return jsonify({'prediction': prediction.tolist()})
+```
+
+### Full Code Structure
+The overall structure of the `main.py` script seems to involve:
+1. Setting up the Flask application.
+2. Defining routes for the home page, about page, file upload, and prediction.
+3. Handling file uploads and saving them to a specific directory.
+4. Loading the trained machine learning model and making predictions based on user inputs.
+5. Rendering HTML templates to display the results and provide an interface for user interaction.
+
+### Running the Script
+To run the Flask application, execute the script using Python:
+
+```bash
+python main.py
+```
+
+Ensure that the necessary templates (`index.html`, `about.html`, `upload.html`) are present in the `templates` directory and the static files (CSS, JS) are in the `static` directory.
+
+Would you like a more detailed breakdown of any specific part of the code or further assistance with anything else?
 ## Conclusion
  
  This documentation provides a comprehensive guide to setting up and running the Insurance fraud Prediction System. By following the steps outlined, you should be able to deploy the application and make predictions based on user input. If you encounter any issues, ensure that all dependencies are installed and that the model file is correctly placed in the `models` directory.
